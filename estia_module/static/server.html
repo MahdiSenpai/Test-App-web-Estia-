@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub OAuth</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Connexion avec GitHub</h1>
+  <p id="status">En attente de connexion...</p>
+
+  <script>
+    // Configuration de GitHub OAuth
+    const CLIENT_ID = "Ov23lie4FHBlJRitNIRb"; // Votre Client ID
+    const REDIRECT_URI = "http://localhost:8000/auth/github/callback"; // URL configurée dans GitHub
+
+    // Fonction pour rediriger vers GitHub
+    function redirectToGitHub() {
+      const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=read:user`;
+      window.location.href = githubAuthURL;
+    }
+
+    // Fonction pour gérer le callback de GitHub
+    async function handleGitHubCallback() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+
+      if (code) {
+        const response = await fetch("http://localhost:8000/api/github-token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code }),
+        });
+
+        const data = await response.json();
+
+        if (data.access_token) {
+          // Redirection vers une page qui compte les commits
+          window.location.href = `/GitHubCommits.html?access_token=${data.access_token}`;
+        } else {
+          document.getElementById("status").innerHTML = `
+            <h2>Erreur lors de l'échange du code contre un access token.</h2>
+          `;
+        }
+      }
+    }
+
+    window.onload = function () {
+      handleGitHubCallback();
+    };
+  </script>
+</body>
+</html>

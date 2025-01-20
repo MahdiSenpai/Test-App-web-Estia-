@@ -1,0 +1,87 @@
+/* Général */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Fond léger */
+  }
+  
+  
+  /* Bouton bleu aligné à gauche */
+  .blue-button {
+    left: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blue-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Barre de recherche alignée à droite */
+  .search-bar {
+    position: absolute;
+    right: 20px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-bar:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Titre principal */
+  .main-title {
+    margin: 80px 0 20px 0; /* Ajustement des marges pour éviter chevauchements */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Colonnes */
+  .columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  /* Colonne individuelle */
+  .column {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .column h2 {
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Contenu dans les colonnes */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centre les lignes */
+    gap: 15px; /* Espace entre les éléments */
+  }
+  
+  /* Contenu restreint à 2 par ligne */
+  .row > * {
+    width: calc(50% - 15px); /* 2 éléments par ligne avec espace */
+    text-align: center;
+  }
+  

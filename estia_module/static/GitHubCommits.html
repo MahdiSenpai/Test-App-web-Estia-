@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Commits</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Nombre de commits pour Test-App-web-Estia</h1>
+  <div id="commits-info">Chargement...</div>
+
+  <script>
+    async function fetchCommits() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const accessToken = urlParams.get("access_token");
+
+      if (accessToken) {
+        try {
+          // Appeler l'API GitHub pour récupérer les commits du projet
+          const response = await axios.get(
+            "https://api.github.com/repos/MahdiSenpai/Test-App-web-Estia/commits", // Remplacez 'username' par votre nom d'utilisateur GitHub
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
+
+          const commits = response.data;
+
+          // Afficher le nombre total de commits
+          document.getElementById("commits-info").innerHTML = `
+            <p>Nombre total de commits : ${commits.length}</p>
+          `;
+
+          // Afficher les détails des commits
+          commits.forEach((commit, index) => {
+            const commitInfo = document.createElement("p");
+            commitInfo.innerHTML = `<strong>Commit ${index + 1} :</strong> ${commit.commit.message}`;
+            document.body.appendChild(commitInfo);
+          });
+        } catch (error) {
+          console.error("Erreur lors de la récupération des commits :", error);
+          document.getElementById("commits-info").innerHTML = `
+            <p>Erreur lors de la récupération des commits.</p>
+          `;
+        }
+      } else {
+        document.getElementById("commits-info").innerHTML = `
+          <p>Aucun access token trouvé.</p>
+        `;
+      }
+    }
+
+    fetchCommits();
+  </script>
+</body>
+</html>

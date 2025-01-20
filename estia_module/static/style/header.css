@@ -1,0 +1,60 @@
+/* styles.css */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .home-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .home-button {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .home-image {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .button-text {
+    margin-left: 8px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+ 
+  .nav-link {
+    color: #555;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .logo-section .site-logo {
+    width: 64px;
+    height: 64px;
+  }
+  

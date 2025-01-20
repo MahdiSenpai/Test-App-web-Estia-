@@ -1,0 +1,23 @@
+
+.blue-button {
+    background-color: #007BFF; /* Bleu primaire */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Taille du bouton */
+    font-size: 16px; /* Taille du texte */
+    cursor: pointer; /* Curseur "pointer" au survol */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
+    transition: all 0.3s ease; /* Animation fluide */
+  }
+  
+  .blue-button:hover {
+    background-color: #0056b3; /* Bleu plus foncé au survol */
+    transform: translateY(-2px); /* Léger déplacement vers le haut */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Accentue l'ombre */
+  }
+  
+  .blue-button:active {
+    transform: translateY(0); /* Retour en place au clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Réduit l'ombre */
+  }
